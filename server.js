@@ -7,5 +7,6 @@ const port = 3000;
 
 app.get('/', (req, res) => res.send('Hello world!  🦕'));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 require('./app/routes')(app, {});
 app.listen(port, () => console.log(`Dinosaurs sighted on port ${port}!`))
