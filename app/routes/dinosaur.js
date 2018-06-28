@@ -38,4 +38,19 @@ module.exports = function(app, db) {
       } 
     });
   });
+
+  // UPDATE
+  app.put('/dinosaurs/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(req.body)
+    const details = { '_id': new ObjectID(id) };
+    const dinosaur = { name: req.body.name, type: req.body.type };
+    db.collection('dinosaurs').update(details, dinosaur, (err, result) => {
+      if (err) {
+          res.send({ 'error': 'An error has occurred' });
+      } else {
+          res.send(dinosaur);
+      } 
+    });
+  });
 };
