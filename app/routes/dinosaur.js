@@ -25,4 +25,17 @@ module.exports = function(app, db) {
       }
     });
   });
+
+  // DELETE
+  app.delete('/dinosaurs/:id', (req, res) => {
+    const id = req.params.id;
+    const details = { '_id': new ObjectID(id) };
+    db.collection('dinosaurs').remove(details, (err, item) => {
+      if (err) {
+        res.send({ 'error': 'An error has occurred' });
+      } else {
+        res.send('Dinosaur ' + id + ' deleted!');
+      } 
+    });
+  });
 };
