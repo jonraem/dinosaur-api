@@ -1,1 +1,2 @@
-This is an Express application.
+# dinosaur-api
+This is an Express API for dinosaurs. 🦖
